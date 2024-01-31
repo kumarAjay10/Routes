@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Blog from "./Pages/Blog";
+import Contact from "./Pages/Contact";
+import Navbar from "./Pages/Navbar"
+import {Routes, Route} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+const App = ()=>{
+
+  const[count,setCount]=useState(0);
+
+
+  return(
+
+    <div>
+      <Navbar/>
+    <Routes>
+      <Route path="/home" element={<Home name="Ajay"/>}/>
+      <Route path="/About" element={<About/>}/>
+      <Route path="/Blog" element={<Blog count={count} setCount={setCount}/>}/>
+      <Route path="/Contact" element={<Contact count={count}/>}/>
+    </Routes>
     </div>
-  );
+  )
 }
 
 export default App;
+
+{/* <Home/>
+<About/>
+<Blog/>
+<Contact/> */}
